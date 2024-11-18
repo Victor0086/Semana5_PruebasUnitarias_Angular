@@ -1,0 +1,205 @@
+<!-- Mensajes de bienvenida o aviso -->
+<div *ngIf="usuarioRegistrado" class="alert alert-success text-center">
+    ¡Bienvenido de nuevo, {{ miRegistro.value.nombreUsuario }}!
+  </div>
+  <div *ngIf="!usuarioRegistrado" class="alert alert-warning text-center">
+    Por favor, inicia sesión o regístrate.
+  </div>
+  
+  <!-- Navegación -->
+  <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="nav">
+              <ul class="navbar-nav me-auto">
+                  <!-- Ícono de Inicio -->
+                  <li class="nav-item">
+                      <a href="/" class="navbar-brand"> 
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
+                              <path d="M8.354 1.146a.5.5 0 0 1 .292.147l6 6a.5.5 0 0 1-.708.708L13 7.707V13.5a.5.5 0 0 1-.5.5h-3v-3.5a.5.5 0 0 0-.5-.5H7a.5.5 0 0 0-.5.5V14h-3a.5.5 0 0 1-.5-.5V7.707l-1.938 1.938a.5.5 0 1 1-.708-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                              <path d="M7 13.5v-3h2v3H7z"/>
+                          </svg>
+                          Inicio
+                      </a>    
+                  </li>
+                  
+                  <!-- Botón de Categorías (menú de offcanvas) -->
+                  <li class="nav-item">
+                      <a href="#" class="navbar-brand" data-bs-toggle="offcanvas" data-bs-target="#categoryMenu" aria-controls="categoryMenu">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-grid" viewBox="0 0 16 16">
+                              <path d="M3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v11A1.5 1.5 0 0 1 11.5 15h-7A1.5 1.5 0 0 1 3 13.5V2.5zM4 2v11h8V2H4z"/>
+                          </svg>
+                          Categorías
+                      </a>
+                  </li>
+              </ul>
+              
+              <ul class="navbar-nav ms-auto">
+                  <!-- Botón de inicio de sesión -->
+                  <li class="nav-item">
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                              <path d="M13 8a5 5 0 1 0-10 0 5 5 0 0 0 10 0zM8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm0 8a3 3 0 0 0-2.83 2h5.66A3 3 0 0 0 8 9zm0-1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                          </svg>
+                          Iniciar Sesión
+                      </button>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+  
+  <!-- Offcanvas de Categorías -->
+  <div class="offcanvas offcanvas-top custom-offcanvas" tabindex="-1" id="categoryMenu" aria-labelledby="categoryMenuLabel">
+      <div class="offcanvas-header">
+          <h5 id="categoryMenuLabel">Categorías</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a href="/accion" class="nav-link">Acción</a>
+              </li>
+              <li class="nav-item">
+                  <a href="/terror" class="nav-link">Terror</a>
+              </li>
+              <li class="nav-item">
+                  <a href="/aventura" class="nav-link">Aventura</a>
+              </li>
+              <li class="nav-item">
+                  <a href="/deporte" class="nav-link">Deporte</a>
+              </li>
+          </ul>
+      </div>
+  </div>
+  
+  <!-- Ventana de inicio de sesión -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <form>
+                      <div class="mb-3">
+                          <label for="username" class="form-label">Nombre de usuario o correo</label>
+                          <input type="text" class="form-control" id="username" placeholder="Ingrese su usuario o correo">
+                      </div>
+                      <div class="mb-3">
+                          <label for="password" class="form-label">Contraseña</label>
+                          <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
+                      </div>
+                      <button type="button" class="btn btn-primary w-100">Iniciar sesión</button>
+                  </form>
+                  <div class="mt-3">
+                      <a href="#" class="d-block">Recuperar contraseña</a>
+                      <a href="/registro" class="d-block">Crear cuenta nueva</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+<!-- Formulario de Registro -->
+    <div class="columna">
+        <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh; padding: 20px;">
+        <div class="row justify-content-center w-100">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+            <div class="card shadow-sm">
+                <div class="navbar navbar-expand-lg navbar-dark bg-dark text-white justify-content-center">
+                Registro de Usuario
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="miRegistro" (ngSubmit)="submitForm()" id="register-form" novalidate>
+                        <!-- Campos del formulario -->
+                        <div class="form-group mb-3">
+                          <label for="nombreCompleto">Nombre Completo</label>
+                          <input type="text" class="form-control" id="nombreCompleto" formControlName="nombreCompleto" placeholder="Ingresa tu nombre completo" required>
+                          <div *ngIf="miRegistro.get('nombreCompleto')?.touched && miRegistro.get('nombreCompleto')?.invalid" class="text-danger">
+                            Nombre completo es requerido.
+                          </div>
+                        </div>
+                        <div class="form-group mb-3">
+                          <label for="nombreUsuario">Nombre de Usuario</label>
+                          <input type="text" class="form-control" id="nombreUsuario" formControlName="nombreUsuario" placeholder="Ingresa un nombre de usuario" required>
+                          <div *ngIf="miRegistro.get('nombreUsuario')?.touched && miRegistro.get('nombreUsuario')?.invalid" class="text-danger">
+                            Nombre de usuario es requerido.
+                          </div>
+                        </div>
+                        <div class="form-group mb-3">
+                          <label for="email">Correo Electrónico</label>
+                          <input type="email" class="form-control" id="email" formControlName="email" placeholder="Ingresa tu correo electrónico" required>
+                          <div *ngIf="miRegistro.get('email')?.touched && miRegistro.get('email')?.invalid" class="text-danger">
+                            <div *ngIf="miRegistro.get('email')?.errors?.['required']">Correo electrónico es requerido.</div>
+                            <div *ngIf="miRegistro.get('email')?.errors?.['email']">Correo electrónico no es válido.</div>
+                          </div>
+                        </div>
+                        <div class="form-row mb-3">
+                          <div class="col-md-6">
+                            <label for="password">Contraseña</label>
+                            <input type="password" class="form-control" id="password" formControlName="password" placeholder="Ingresa tu contraseña" required>
+                            <div *ngIf="miRegistro.get('password')?.touched && miRegistro.get('password')?.invalid" class="text-danger">
+                              <div *ngIf="miRegistro.get('password')?.errors?.['required']">Contraseña es requerida.</div>
+                              <div *ngIf="miRegistro.get('password')?.errors?.['minlength']">Contraseña debe tener al menos 6 caracteres.</div>
+                              <div *ngIf="miRegistro.get('password')?.errors?.['maxlength']">Contraseña no puede tener más de 18 caracteres.</div>
+                              <div *ngIf="miRegistro.get('password')?.errors?.['pattern']">Contraseña debe contener al menos una letra mayúscula y un número.</div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <label for="confirmPassword">Repite la Contraseña</label>
+                            <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword" placeholder="Repite tu contraseña" required>
+                            <div *ngIf="miRegistro.get('confirmPassword')?.touched && miRegistro.get('confirmPassword')?.invalid" class="text-danger">
+                              Confirmación de contraseña es requerida.
+                            </div>
+                            <div *ngIf="miRegistro.errors?.['notSame']" class="text-danger">
+                              Las contraseñas no coinciden.
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group mb-3">
+                          <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                          <input type="date" class="form-control" id="fechaNacimiento" formControlName="fechaNacimiento" placeholder="Ingresa tu fecha de nacimiento" required>
+                          <div *ngIf="miRegistro.get('fechaNacimiento')?.touched && miRegistro.get('fechaNacimiento')?.invalid" class="text-danger">
+                            <div *ngIf="miRegistro.get('fechaNacimiento')?.errors?.['required']">Fecha de nacimiento es requerida.</div>
+                            <div *ngIf="miRegistro.get('fechaNacimiento')?.errors?.['edadMinima']">Debes tener al menos 13 años para registrarte.</div>
+                          </div>
+                        </div>
+                        <div class="form-group mb-4">
+                          <label for="direccion">Dirección de Despacho</label>
+                          <textarea class="form-control" id="direccion" formControlName="direccion" rows="3" placeholder="Ingresa tu dirección"></textarea>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <button type="submit" class="btn btn-danger">Registrar</button>
+                          <button type="reset" class="btn btn-secondary">Limpiar</button>
+                        </div>
+                      </form>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+  
+<!-- para recuperar contraseña -->
+<div class="modal fade" id="recoverPasswordModal" tabindex="-1" aria-labelledby="recoverPasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="recoverPasswordModalLabel">Recuperar Contraseña</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="recover-password-form">
+                    <div class="form-group">
+                        <label for="recoverEmail">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="recoverEmail" placeholder="Ingresa tu correo electrónico" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
